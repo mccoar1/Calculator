@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 namespace Calculator
 {
@@ -172,7 +173,7 @@ namespace Calculator
             {
                 Console.WriteLine("\nCalculator: ");
                 string input = Console.ReadLine();
-                double num = Convert.ToDouble(input);
+                int num = Convert.ToInt32(input);
                 string binary = "";
                 if (num == 0)
                 {
@@ -234,25 +235,26 @@ namespace Calculator
                 Console.ReadLine();
                 return;
             }
-            //else if (choice == "3")
-            //{
-            //    Console.WriteLine("Binary Calculator: ");
-            //    Console.WriteLine("1. Decimal to Binary/Hex\n2. Binary to Decimal/Hex\n3. Hex to Decimal/Binary");
-            //    Console.WriteLine("\nCalculator: ");
-            //    string choice2 = Console.ReadLine();
-            //    if (choice2 == "1")
-            //    {
+            else if (choice == "3")
+            {
+                Console.WriteLine("N/A");
+                //    Console.WriteLine("Binary Calculator: ");
+                //    Console.WriteLine("1. Decimal to Binary/Hex\n2. Binary to Decimal/Hex\n3. Hex to Decimal/Binary");
+                //    Console.WriteLine("\nCalculator: ");
+                //    string choice2 = Console.ReadLine();
+                //    if (choice2 == "1")
+                //    {
 
-            //    }
-            //    else if (choice2 == "2")
-            //    {
+                //    }
+                //    else if (choice2 == "2")
+                //    {
 
-            //    }
-            //    else if (choice2 == "3")
-            //    {
+                //    }
+                //    else if (choice2 == "3")
+                //    {
 
-            //    }
-            //}
+                //    }
+            }
             else
             {
                 Console.WriteLine("\nInvalid option");
@@ -264,7 +266,7 @@ namespace Calculator
             Console.ReadLine();
             return;
         }
-        public static void Matrices()
+        public static void Matrices()//Fin
         {
             Console.WriteLine("Matrices Calculator: ");
             Console.WriteLine("1. Addition\n2. Subtraction\n3. Dot Product\n4. Scalar\n5. Determinant");
@@ -357,10 +359,10 @@ namespace Calculator
             return;
         }
 
-        public static void GandV()
+        public static void GandV()//Fin
         {
             Console.WriteLine("Matrices Calculator: ");
-            Console.WriteLine("1. Distance between two points\n2. Midpoint between two points\n3. Gradient");
+            Console.WriteLine("1. Distance between two points\n2. Midpoint between two points\n3. Gradient\n4. Radians to Degrees\n5. Degrees to Radians\n6. Addition and Subtraction of Vectors\n7.Dot Product");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
@@ -424,6 +426,72 @@ namespace Calculator
 
                 Console.WriteLine($"= {grad}");
             }
+            else if (choice == "4")
+            {
+                Console.WriteLine("\nr: ");
+                double radian = Convert.ToDouble(Console.ReadLine());
+                double degrees = radian * (180 / Math.PI);
+                Console.WriteLine($"= {degrees}");
+            }
+            else if (choice == "5")
+            {
+                Console.WriteLine("\nd: ");
+                double degrees = Convert.ToDouble(Console.ReadLine());
+                double radian = degrees * (Math.PI / 180);
+                Console.WriteLine($"= {radian}");
+            }
+            else if (choice == "6")
+            {
+                Console.WriteLine("\na1: a2: op: b1: b2:");
+                string input = Console.ReadLine();
+                string[] numbers = input.Split(" ");
+                double a1 = Convert.ToDouble(numbers[0]);
+                double a2 = Convert.ToDouble(numbers[1]);
+                string op = numbers[2];
+                double b1 = Convert.ToDouble(numbers[3]);
+                double b2 = Convert.ToDouble(numbers[4]);
+                if (input.Contains("+"))//Plus
+                {
+                    op = "+";
+                    double c1 = a1 + b1;
+                    double c2 = a2 + b2;
+                    Console.WriteLine($"= {c1}/{c2}");
+                }
+                else if (input.Contains("-"))//Minus
+                {
+                    op = "-";
+                    double c1 = a1 - b1;
+                    double c2 = a2 - b2;
+                    Console.WriteLine($"= {c1}/{c2}");
+                }
+            }
+            else if (choice == "7")
+            {
+                Console.WriteLine("\na1: a2: b1: b2:");
+                string input = Console.ReadLine();
+                string[] numbers = input.Split(" ");
+                double a1 = Convert.ToDouble(numbers[0]);
+                double a2 = Convert.ToDouble(numbers[1]);
+                double b1 = Convert.ToDouble(numbers[2]);
+                double b2 = Convert.ToDouble(numbers[3]);
+                double c1 = a1 * b1;
+                double c2 = a2 * b2;
+                double dot = c1 + c2;
+                if (dot > 0)
+                {
+                    Console.WriteLine($"\n{c1} + {c2} = {dot}");
+                    Console.WriteLine("= Positive");
+                }
+                else if (dot < 0)
+                {
+                    Console.WriteLine($"\n{c1} + {c2} = {dot}");
+                    Console.WriteLine("= Negative");
+                }
+                else
+                {
+                    Console.WriteLine("Clash");
+                }
+            }
             else
             {
                 Console.WriteLine("\nInvalid option");
@@ -439,7 +507,7 @@ namespace Calculator
         public static void NumTheandEncryp()
         {
             Console.WriteLine("Number Theory and Encryption: ");
-            Console.WriteLine("1. Primality");
+            Console.WriteLine("1. Primality\n2. RNG");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
@@ -470,6 +538,29 @@ namespace Calculator
                         Console.WriteLine("Not a prime number");
                     }
                 }
+            }
+            else if (choice == "2")
+            {
+                Console.WriteLine("\nx: a: c: mod:");
+                string input = Console.ReadLine();
+                string[] numbers = input.Split(" ");
+                int x = Convert.ToInt32(numbers[0]);
+                int a = Convert.ToInt32(numbers[1]);
+                int c = Convert.ToInt32(numbers[2]);
+                int mod = Convert.ToInt32(numbers[3]);
+                int start = x;
+                int count = 0;
+                x = (a * x + c) % mod;//Work in progress...
+                Console.WriteLine($"({a} * {start} + {c}) mod{mod} = {x}");
+                while (x != start && count < mod * 2)//Could repeat forever so mod * 2 prevents that by giving a number for it to finish at, When count reahces that number
+                {
+                    int old = x;
+                    x = (a * x + c) % mod;
+                    Console.WriteLine($"({a} * {old} + {c}) mod{mod} = {x}");//Work in progress...
+                    count++;
+                }
+                int xi = (a * x + c) % mod;
+                Console.WriteLine($"({a} * {x} + {c}) mod{mod} = {xi}");//Work in progress...
             }
             Console.WriteLine("\nPress enter to continue.");
             Console.ReadLine();
