@@ -347,16 +347,76 @@ namespace Calculator
         public static void GandV()
         {
             Console.WriteLine("Matrices Calculator: ");
-            Console.WriteLine("1. Distance between two points\n2. Midpoint between two points");
+            Console.WriteLine("1. Distance between two points\n2. Midpoint between two points\n3. Gradient");
             string choice = Console.ReadLine();
-            if (choice == "1")
+            if (choice == "1")//NOT FINISHED
             {
+                Console.WriteLine("\nx1: y1:");
+                string input1 = Console.ReadLine();
+                string[] numbers1 = input1.Split(" ");
+                double x1 = Convert.ToDouble(numbers1[0]);
+                double y1 = Convert.ToDouble(numbers1[1]);
+
+                Console.WriteLine("\nx1: y1:");
+                string input2 = Console.ReadLine();
+                string[] numbers2 = input2.Split(" ");
+                double x2 = Convert.ToDouble(numbers2[0]);
+                double y2 = Convert.ToDouble(numbers2[1]);
+
+                double x = (x2 - x1);
+                double y = (y2 - y1);
+                double total = (x * x) + (y * y);
 
             }
             else if (choice == "2")
             {
+                Console.WriteLine("\nx1: y1:");
+                string input1 = Console.ReadLine();
+                string[] numbers1 = input1.Split(" ");
+                double x1 = Convert.ToDouble(numbers1[0]);
+                double y1 = Convert.ToDouble(numbers1[1]);
 
+                Console.WriteLine("\nx2: y2:");
+                string input2 = Console.ReadLine();
+                string[] numbers2 = input2.Split(" ");
+                double x2 = Convert.ToDouble(numbers2[0]);
+                double y2 = Convert.ToDouble(numbers2[1]);
+
+                double x = (x1 + x2) / 2;
+                double y = (y1 + y2) / 2;
+
+                Console.WriteLine($"= {x},{y}");
             }
+            else if (choice == "3")
+            {
+                Console.WriteLine("\nx1: y1:");
+                string input1 = Console.ReadLine();
+                string[] numbers1 = input1.Split(" ");
+                double x1 = Convert.ToDouble(numbers1[0]);
+                double y1 = Convert.ToDouble(numbers1[1]);
+
+                Console.WriteLine("\nx2: y2:");
+                string input2 = Console.ReadLine();
+                string[] numbers2 = input2.Split(" ");
+                double x2 = Convert.ToDouble(numbers2[0]);
+                double y2 = Convert.ToDouble(numbers2[1]);
+
+                double a = (y2 - y1);
+                double b = (x2 - x1);
+                double grad = a / b;
+
+                Console.WriteLine($"= {grad}");
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid option");
+                Console.WriteLine("Press enter to continue.");
+                Console.ReadLine();
+                return;
+            }
+            Console.WriteLine("\nPress enter to continue.");
+            Console.ReadLine();
+            return;
         }
     }
 }
