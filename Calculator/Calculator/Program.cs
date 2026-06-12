@@ -11,7 +11,7 @@ namespace Calculator
             {
                 Console.Clear();
                 Console.WriteLine("Main Menu\nPlease select from the numbers below");
-                Console.WriteLine("1  Basic Calculator (+ - * / % ! ^ SQRT)\n2  Binary\n3  Matrices\n4  Task 4\n0  Exit Menu System\n");
+                Console.WriteLine("1  Basic Calculator (+ - * / % ! ^ sqrt)\n2  Binary\n3  Matrices\n4  Geometry and Vectors\n0  Exit Menu System\n");
                 string temp = Console.ReadLine();
                 task = Convert.ToInt32(temp);
                 Console.Clear();
@@ -27,10 +27,9 @@ namespace Calculator
                     case 3:
                         Matrices();
                         break;
-                        //    break;
-                        //case 4:
-                        //    Four();
-                        //    break;
+                    case 4:
+                        GandV();
+                        break;
                 }
             } while (task != 0 && task <= 4);//Lab 18 menu from Programming 1
         }
@@ -343,6 +342,21 @@ namespace Calculator
             Console.WriteLine("\nPress enter to continue.");
             Console.ReadLine();
             return;
+        }
+
+        public static void GandV()
+        {
+            Console.WriteLine("Matrices Calculator: ");
+            Console.WriteLine("1. Distance between two points\n2. Midpoint between two points");
+            string choice = Console.ReadLine();
+            if (choice == "1")
+            {
+
+            }
+            else if (choice == "2")
+            {
+
+            }
         }
     }
 }
