@@ -507,7 +507,7 @@ namespace Calculator
         public static void NumTheandEncryp()
         {
             Console.WriteLine("Number Theory and Encryption: ");
-            Console.WriteLine("1. Primality\n2. RNG");
+            Console.WriteLine("1. Primality\n2. RNG\n3. Bar Codes");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
@@ -561,6 +561,36 @@ namespace Calculator
                 }
                 int xi = (a * x + c) % mod;
                 Console.WriteLine($"({a} * {x} + {c}) mod{mod} = {xi}");//Work in progress...
+            }
+            else if (choice == "3")
+            {
+                Console.WriteLine("\nCalculator:");
+                string input = Console.ReadLine();
+                if (input.Length == 13)
+                {
+                    string prefix = input.Substring(0, 3);
+
+                    if (prefix == "978" || prefix == "979")//ISBN can be 13 digits, but only if code starts with 978 or 979
+                    {
+                        Console.WriteLine("\n= ISBN-13");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n= EAN-13");//EAN is 13 digits long, not starting with 978 or 979
+                    }
+                }
+                else if (input.Length == 12)//UPC-A is exactly 12 numbers
+                {
+                    Console.WriteLine("\n= UPC-A");
+                }
+                else if (input.Length == 10)//ISBN can also be 10 numbers
+                {
+                    Console.WriteLine("\n= ISBN");
+                }
+                else
+                {
+                    Console.WriteLine("\n= Invalid Code");
+                }
             }
             Console.WriteLine("\nPress enter to continue.");
             Console.ReadLine();
