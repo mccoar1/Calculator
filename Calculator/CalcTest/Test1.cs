@@ -72,5 +72,40 @@ namespace CalcTest
             Assert.AreEqual(expectedResult3, result3);
             Assert.AreEqual(expectedResult4, result4);
         }
+        [TestMethod]
+        public void TestMethod8()//addition with a negative
+        {
+            double expectedResult = 20;
+            double result = 40 + -20;
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void TestMethod9()//subtraction with a negative
+        {
+            double expectedResult = 60;
+            double result = 40 - -20;
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void TestMethod10()//sqrt
+        {
+            double expectedResult = 7;
+            double result = Math.Sqrt(49);
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void TestMethod11()//Linear con
+        {
+            double expectedResult = 11;
+            double result = (2 * 3 + 5) % 16;
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void TestMethod12()//mod by 10
+        {
+            double expectedResult = 9;
+            double result = 108629 % 10;
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }
