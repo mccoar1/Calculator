@@ -599,7 +599,83 @@ namespace Calculator
 
         public static void Cryptography()
         {
-            Console.WriteLine("N/A");
+            Console.WriteLine("Number Theory and Encryption: ");
+            Console.WriteLine("1. Encrypt n + 3\n2. Decrypt n - 3\n3. Encrypt aP + b\n4. Decrypt aP - b");
+            string choice = Console.ReadLine();
+            if (choice == "1")
+            {
+                Console.WriteLine("\nCalculator:");
+                string input = Console.ReadLine().ToUpper();
+                string encrypted = "";
+                for (int i = 0; i < input.Length; i++)
+                {
+                    char oldLetter = input[i];
+                    int num = oldLetter - 'A'; //Tried doing - 1 but letters are stored as ASCII values, so subtract 'A' to get 0-25
+                    int encrypt = (num + 3) % 26;
+                    char newLetter = (char)(encrypt + 'A');
+                    encrypted += newLetter;
+                }
+                Console.WriteLine($"= {encrypted}");
+            }
+            if (choice == "2")
+            {
+                Console.WriteLine("\nCalculator:");
+                string input = Console.ReadLine().ToUpper();
+                string encrypted = "";
+                for (int i = 0; i < input.Length; i++)
+                {
+                    char oldLetter = input[i];
+                    int num = oldLetter - 'A';
+                    int encrypt = (num - 3) % 26;
+                    char newLetter = (char)(encrypt + 'A');
+                    encrypted += newLetter;
+                }
+                Console.WriteLine($"= {encrypted}");
+            }
+            if (choice == "3")
+            {
+                Console.WriteLine("\nCalculator:");
+                Console.WriteLine("\nInput: ");
+                string input = Console.ReadLine().ToUpper();
+                string encrypted = "";
+                Console.WriteLine("\nInput: a: P: b: ");
+                string input1 = Console.ReadLine();
+                string[] numbers = input1.Split(" ");
+                int a = Convert.ToInt32(numbers[0]);
+                int P = Convert.ToInt32(numbers[1]);
+                int b = Convert.ToInt32(numbers[2]);
+                for (int i = 0; i < input.Length; i++)
+                {
+                    char oldLetter = input[i];
+                    int num = oldLetter - 'A';
+                    int encrypt = (a * num + b) % 26;
+                    char newLetter = (char)(encrypt + 'A');
+                    encrypted += newLetter;
+                }
+                Console.WriteLine($"= {encrypted}");
+            }
+            if (choice == "4")
+            {
+                Console.WriteLine("\nCalculator:");
+                Console.WriteLine("\nInput: ");
+                string input = Console.ReadLine().ToUpper();
+                string encrypted = "";
+                Console.WriteLine("\nInput: a: P: b: ");
+                string input1 = Console.ReadLine();
+                string[] numbers = input1.Split(" ");
+                int a = Convert.ToInt32(numbers[0]);
+                int P = Convert.ToInt32(numbers[1]);
+                int b = Convert.ToInt32(numbers[2]);
+                for (int i = 0; i < input.Length; i++)
+                {
+                    char oldLetter = input[i];
+                    int num = oldLetter - 'A';
+                    int encrypt = (a * num + b) % 26;
+                    char newLetter = (char)(encrypt + 'A');
+                    encrypted += newLetter;
+                }
+                Console.WriteLine($"= {encrypted}");
+            }
             Console.WriteLine("\nPress enter to continue.");
             Console.ReadLine();
             return;
