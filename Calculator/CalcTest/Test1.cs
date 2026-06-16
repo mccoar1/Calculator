@@ -107,5 +107,16 @@ namespace CalcTest
             double result = 108629 % 10;
             Assert.AreEqual(expectedResult, result);
         }
+        [TestMethod]
+        public void TestMethod13()//determinant
+        {
+            double expectedResult = 20;
+            double a = 8;
+            double b = 5;
+            double c = 4;
+            double d = 5;
+            double result = (a * d) - (b * c);
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }
