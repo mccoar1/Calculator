@@ -118,5 +118,36 @@ namespace CalcTest
             double result = (a * d) - (b * c);
             Assert.AreEqual(expectedResult, result);
         }
+        [TestMethod]
+        public void TestMethod14()//Decryption n - 3
+        {
+            string expectedResult = "WOOF";
+            string decrypt = "ZRRI";
+            string encrypted = "";
+            for (int i = 0; i < decrypt.Length; i++)
+            {
+                char oldLetter = decrypt[i];
+                int num = oldLetter - 'A';
+                int encrypt = (num - 3) % 26;
+                char newLetter = (char)(encrypt + 'A');
+                encrypted += newLetter;
+            }
+            Assert.AreEqual(expectedResult, encrypted);
+        }
+        public void TestMethod15()//Encryption n + 3
+        {
+            string expectedResult = "ZRRI";
+            string encrypt2 = "WOOF";
+            string encrypted = "";
+            for (int i = 0; i < encrypt2.Length; i++)
+            {
+                char oldLetter = encrypt2[i];
+                int num = oldLetter - 'A';
+                int encrypt = (num + 3) % 26;
+                char newLetter = (char)(encrypt + 'A');
+                encrypted += newLetter;
+            }
+            Assert.AreEqual(expectedResult, encrypted);
+        }
     }
 }

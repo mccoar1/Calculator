@@ -172,7 +172,7 @@ namespace Calculator
             if (choice == "1")
             {
                 Console.WriteLine("\nCalculator: ");
-                long dec = Convert.ToInt64(Console.ReadLine());
+                int dec = Convert.ToInt32(Console.ReadLine());
                 string binaryValue = Convert.ToString(dec, 2);              
                 while (binaryValue.Length < 8)//Adds 0s so the binary is always 8 bits long
                 {
@@ -213,7 +213,7 @@ namespace Calculator
                     num3 = num1 - num2;
                 }
                 string binary = Convert.ToString(num3, 2);
-                while (binary.Length < 8)//Adds 0s so the binary is always 8 bits long
+                while (binary.Length < 8)
                 {
                     binary = "0" + binary;
                 }
@@ -230,11 +230,11 @@ namespace Calculator
                 string choice2 = Console.ReadLine();
                 if (choice2 == "1")
                 {
-                    Console.WriteLine("Decimal: ");
-                    long dec = Convert.ToInt64(Console.ReadLine());
+                    Console.WriteLine("Decimal: ");//decimal conversion
+                    int dec = Convert.ToInt32(Console.ReadLine());
                     string binaryValue = Convert.ToString(dec, 2);
                     string hexValue = dec.ToString("X");
-                    while (binaryValue.Length < 8)//Adds 0s so the binary is always 8 bits long
+                    while (binaryValue.Length < 8)
                     {
                         binaryValue = "0" + binaryValue;
                     }
@@ -242,7 +242,7 @@ namespace Calculator
                 }
                 else if (choice2 == "2")
                 {
-                    Console.WriteLine("Binary: ");
+                    Console.WriteLine("Binary: ");//Binary conversion
                     string bin = Console.ReadLine();
                     int decValue = Convert.ToInt32(bin, 2);
                     string hexValue = decValue.ToString("X");
@@ -250,11 +250,11 @@ namespace Calculator
                 }
                 else if (choice2 == "3")
                 {
-                    Console.WriteLine("Hex: ");
+                    Console.WriteLine("Hex: ");//Hex conversion
                     string hex = Console.ReadLine();
                     int decValue = Convert.ToInt32(hex, 16);
                     string binaryValue = Convert.ToString(decValue, 2);
-                    while (binaryValue.Length < 8)//Adds 0s so the binary is always 8 bits long
+                    while (binaryValue.Length < 8)//I like the way this while loop makes the binary number tidier when working with small numbers, while also alowing for larger binary numbers too
                     {
                         binaryValue = "0" + binaryValue;
                     }
@@ -288,28 +288,28 @@ namespace Calculator
             Console.WriteLine("Matrices Calculator: ");
             Console.WriteLine("1. Addition\n2. Subtraction\n3. Dot Product\n4. Scalar\n5. Determinant");
             string choice = Console.ReadLine();
-            Console.WriteLine("\na: b: c: d:");
-            string input1 = Console.ReadLine();
-            string[] numbers1 = input1.Split(" ");
+            Console.WriteLine("\na: b: c: d:");//Asks the user for 4 numbers
+            string input1 = Console.ReadLine();//stores as input1
+            string[] numbers1 = input1.Split(" ");//splits at each " "
             double a = Convert.ToDouble(numbers1[0]);
             double b = Convert.ToDouble(numbers1[1]);
             double c = Convert.ToDouble(numbers1[2]);
-            double d = Convert.ToDouble(numbers1[3]);
+            double d = Convert.ToDouble(numbers1[3]);//stores each number in the numbers array
 
             if (choice == "1")
             {
-                Console.WriteLine("\ne: f: g: h:");
+                Console.WriteLine("\ne: f: g: h:");//Asks the user for 4 more numbers numbers
                 string input2 = Console.ReadLine();
                 string[] numbers2 = input2.Split(" ");
                 double e = Convert.ToDouble(numbers2[0]);
                 double f = Convert.ToDouble(numbers2[1]);
                 double g = Convert.ToDouble(numbers2[2]);
-                double h = Convert.ToDouble(numbers2[3]);
+                double h = Convert.ToDouble(numbers2[3]);//process repeats itself
 
                 double num1 = a + e;
                 double num2 = b + f;
                 double num3 = c + g;
-                double num4 = d + h;
+                double num4 = d + h;//Had all the equations in my maths book haha
                 Console.WriteLine($"\n{num1} {num2}");
                 Console.WriteLine($"{num3} {num4}");
             }
@@ -464,7 +464,7 @@ namespace Calculator
                 string[] numbers = input.Split(" ");
                 double a1 = Convert.ToDouble(numbers[0]);
                 double a2 = Convert.ToDouble(numbers[1]);
-                string op = numbers[2];
+                string op = numbers[2];//grabs the operator
                 double b1 = Convert.ToDouble(numbers[3]);
                 double b2 = Convert.ToDouble(numbers[4]);
                 if (input.Contains("+"))//Plus
@@ -606,8 +606,15 @@ namespace Calculator
                 }
                 else
                 {
-                    Console.WriteLine("\n= Invalid Code");
+                    Console.WriteLine("\n= Invalid Code");//Got these answers from google
                 }
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid option");
+                Console.WriteLine("Press enter to continue.");
+                Console.ReadLine();
+                return;
             }
             Console.WriteLine("\nPress enter to continue.");
             Console.ReadLine();
@@ -622,76 +629,81 @@ namespace Calculator
             if (choice == "1")
             {
                 Console.WriteLine("\nCalculator:");
-                string input = Console.ReadLine().ToUpper();
-                string encrypted = "";
-                for (int i = 0; i < input.Length; i++)
+                string input = Console.ReadLine().ToUpper();//Stores the word to encrypt
+                string encrypted = "";//Makes an empty string
+                for (int i = 0; i < input.Length; i++)//Loops once for each character in the user's input
                 {
-                    char oldLetter = input[i];
+                    char oldLetter = input[i]; //Gets the current character from the input string
                     int num = oldLetter - 'A'; //Tried doing - 1 but letters are stored as ASCII values, so subtract 'A' to get 0-25
-                    int encrypt = (num + 3) % 26;
-                    char newLetter = (char)(encrypt + 'A');
-                    encrypted += newLetter;
+                    int encrypt = (num + 3) % 26; //Moves the number 3 positions mod by 26
+                    char newLetter = (char)(encrypt + 'A'); //turns the number back into a letter
+                    encrypted += newLetter; //Adds the encypted letter to our empty strin from before the for loop.
                 }
-                Console.WriteLine($"= {encrypted}");
+                Console.WriteLine($"= {encrypted}");//Once loop is over it prints the answer
             }
-            if (choice == "2")
+            else if (choice == "2")
             {
                 Console.WriteLine("\nCalculator:");
-                string input = Console.ReadLine().ToUpper();
+                string input = Console.ReadLine().ToUpper();//Pretty much the same process
                 string encrypted = "";
                 for (int i = 0; i < input.Length; i++)
                 {
                     char oldLetter = input[i];
                     int num = oldLetter - 'A';
-                    int encrypt = (num - 3) % 26;
+                    int encrypt = (num - 3) % 26; //except we move the number back 3 spaces to decrypt. 
                     char newLetter = (char)(encrypt + 'A');
                     encrypted += newLetter;
                 }
                 Console.WriteLine($"= {encrypted}");
             }
-            if (choice == "3")
-            {
-                Console.WriteLine("\nCalculator:");
-                Console.WriteLine("\nInput: ");
-                string input = Console.ReadLine().ToUpper();
-                string encrypted = "";
-                Console.WriteLine("\nInput: a: P: b: ");
-                string input1 = Console.ReadLine();
-                string[] numbers = input1.Split(" ");
-                int a = Convert.ToInt32(numbers[0]);
-                int P = Convert.ToInt32(numbers[1]);
-                int b = Convert.ToInt32(numbers[2]);
-                for (int i = 0; i < input.Length; i++)
-                {
-                    char oldLetter = input[i];
-                    int num = oldLetter - 'A';
-                    int encrypt = (a * num + b) % 26;
-                    char newLetter = (char)(encrypt + 'A');
-                    encrypted += newLetter;
-                }
-                Console.WriteLine($"= {encrypted}");
-            }
-            if (choice == "4")
+            else if (choice == "3") //The Affine Cypher was a bit confusing for me
             {
                 Console.WriteLine("\nCalculator:");
                 Console.WriteLine("\nInput: ");
                 string input = Console.ReadLine().ToUpper();
                 string encrypted = "";
-                Console.WriteLine("\nInput: a: P: b: ");
+                Console.WriteLine("\nInput: a: b: ");
                 string input1 = Console.ReadLine();
                 string[] numbers = input1.Split(" ");
                 int a = Convert.ToInt32(numbers[0]);
-                int P = Convert.ToInt32(numbers[1]);
-                int b = Convert.ToInt32(numbers[2]);
+                int b = Convert.ToInt32(numbers[1]);
                 for (int i = 0; i < input.Length; i++)
                 {
                     char oldLetter = input[i];
                     int num = oldLetter - 'A';
-                    int encrypt = (a * num + b) % 26;
+                    int encrypt = (a * num + b) % 26;//So i used the provided calculation in the assignment document 
+                    char newLetter = (char)(encrypt + 'A');
+                    encrypted += newLetter;//While following the same process to create the encrypted word
+                }
+                Console.WriteLine($"= {encrypted}");
+            }
+            else if (choice == "4")
+            {
+                Console.WriteLine("\nCalculator:");
+                Console.WriteLine("\nInput: ");
+                string input = Console.ReadLine().ToUpper();
+                string encrypted = "";
+                Console.WriteLine("\nInput: a: b: ");
+                string input1 = Console.ReadLine();
+                string[] numbers = input1.Split(" ");
+                int a = Convert.ToInt32(numbers[0]);
+                int b = Convert.ToInt32(numbers[1]);
+                for (int i = 0; i < input.Length; i++)
+                {
+                    char oldLetter = input[i];
+                    int num = oldLetter - 'A';
+                    int encrypt = (a * num - b) % 26; //And used num - b for decryption
                     char newLetter = (char)(encrypt + 'A');
                     encrypted += newLetter;
                 }
                 Console.WriteLine($"= {encrypted}");
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid option");
+                Console.WriteLine("Press enter to continue.");
+                Console.ReadLine();
+                return;
             }
             Console.WriteLine("\nPress enter to continue.");
             Console.ReadLine();
