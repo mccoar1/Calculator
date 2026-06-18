@@ -167,31 +167,18 @@ namespace Calculator
         public static void Binary()//The binary calculator
         {
             Console.WriteLine("Binary Calculator: ");
-            Console.WriteLine("1. Decimal to Binary\n2. Binary Addition and Subtraction\n3. Hex Binary and Decimal conversion");
+            Console.WriteLine("1. Decimal to Binary\n2. Binary Addition and Subtraction\n3. Hex, Binary and Decimal conversion\n4. BCD");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
                 Console.WriteLine("\nCalculator: ");
-                string input = Console.ReadLine();
-                int num = Convert.ToInt32(input);
-                string binary = "";
-                if (num == 0)
+                long dec = Convert.ToInt64(Console.ReadLine());
+                string binaryValue = Convert.ToString(dec, 2);              
+                while (binaryValue.Length < 8)//Adds 0s so the binary is always 8 bits long
                 {
-                    binary = "0";
+                    binaryValue = "0" + binaryValue;
                 }
-                else
-                {
-                    while (num > 0)
-                    {
-                        binary = (num % 2) + binary;
-                        num /= 2;
-                    }
-                }
-                while (binary.Length < 8)//Adds 0s so the binary is always 8 bits long
-                {
-                    binary = "0" + binary;
-                }
-                Console.WriteLine($"Binary: {binary}");
+                Console.WriteLine($"Binary: {binaryValue}");
             }
             else if (choice == "2")
             {
@@ -237,23 +224,53 @@ namespace Calculator
             }
             else if (choice == "3")
             {
-                Console.WriteLine("N/A");
-                //    Console.WriteLine("Binary Calculator: ");
-                //    Console.WriteLine("1. Decimal to Binary/Hex\n2. Binary to Decimal/Hex\n3. Hex to Decimal/Binary");
-                //    Console.WriteLine("\nCalculator: ");
-                //    string choice2 = Console.ReadLine();
-                //    if (choice2 == "1")
-                //    {
-
-                //    }
-                //    else if (choice2 == "2")
-                //    {
-
-                //    }
-                //    else if (choice2 == "3")
-                //    {
-
-                //    }
+                //Console.WriteLine("N/A");
+                Console.WriteLine("Conversion Calculator: ");
+                Console.WriteLine("1. Decimal to Binary/Hex\n2. Binary to Decimal/Hex\n3. Hex to Decimal/Binary");
+                string choice2 = Console.ReadLine();
+                if (choice2 == "1")
+                {
+                    Console.WriteLine("Decimal: ");
+                    long dec = Convert.ToInt64(Console.ReadLine());
+                    string binaryValue = Convert.ToString(dec, 2);
+                    string hexValue = dec.ToString("X");
+                    while (binaryValue.Length < 8)//Adds 0s so the binary is always 8 bits long
+                    {
+                        binaryValue = "0" + binaryValue;
+                    }
+                    Console.WriteLine($"Binary = {binaryValue}\nHex = {hexValue}");
+                }
+                else if (choice2 == "2")
+                {
+                    Console.WriteLine("Binary: ");
+                    string bin = Console.ReadLine();
+                    int decValue = Convert.ToInt32(bin, 2);
+                    string hexValue = decValue.ToString("X");
+                    Console.WriteLine($"Decimal = {decValue}\nHex = {hexValue}");
+                }
+                else if (choice2 == "3")
+                {
+                    Console.WriteLine("Hex: ");
+                    string hex = Console.ReadLine();
+                    int decValue = Convert.ToInt32(hex, 16);
+                    string binaryValue = Convert.ToString(decValue, 2);
+                    while (binaryValue.Length < 8)//Adds 0s so the binary is always 8 bits long
+                    {
+                        binaryValue = "0" + binaryValue;
+                    }
+                    Console.WriteLine($"Binary = {binaryValue}\nDecimal = {decValue}");
+                }
+                else if (choice == "4")
+                {
+                    Console.WriteLine("BCD: ");
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid option");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
             }
             else
             {
