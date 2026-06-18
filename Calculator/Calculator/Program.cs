@@ -38,7 +38,7 @@ namespace Calculator
                         Cryptography();
                         break;
                 }
-            } while (task != 0 && task <= 6);//Lab 18 menu from Programming 1
+            } while (task != 0);//Lab 18 menu from Programming 1
         }
 
         public static void BasicCalc()//basic calc
@@ -263,6 +263,7 @@ namespace Calculator
                 else if (choice == "4")
                 {
                     Console.WriteLine("BCD: ");
+                    Console.WriteLine("N/A");
                 }
                 else
                 {
