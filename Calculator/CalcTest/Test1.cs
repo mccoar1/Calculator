@@ -134,6 +134,7 @@ namespace CalcTest
             }
             Assert.AreEqual(expectedResult, encrypted);
         }
+        [TestMethod]
         public void TestMethod15()//Encryption n + 3
         {
             string expectedResult = "ZRRI";
@@ -148,6 +149,26 @@ namespace CalcTest
                 encrypted += newLetter;
             }
             Assert.AreEqual(expectedResult, encrypted);
+        }
+        [TestMethod]
+        public void TestMethod16()//Dec to BCD
+        {
+            string expectedResult = "10000000";
+            int dec = 128;
+            string binaryValue = Convert.ToString(dec, 2);
+            while (binaryValue.Length < 8)
+            {
+                binaryValue = "0" + binaryValue;
+            }
+            Assert.AreEqual(expectedResult, binaryValue);
+        }
+        [TestMethod]
+        public void TestMethod17()//Dec to HEX
+        {
+            string expectedResult = "F";
+            int dec = 15;
+            string hexValue = dec.ToString("X");
+            Assert.AreEqual(expectedResult, hexValue);
         }
     }
 }
