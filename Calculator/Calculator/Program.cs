@@ -260,17 +260,28 @@ namespace Calculator
                     }
                     Console.WriteLine($"Binary = {binaryValue}\nDecimal = {decValue}");
                 }
-                else if (choice == "4")
-                {
-                    Console.WriteLine("BCD: ");
-                    Console.WriteLine("N/A");
-                }
                 else
                 {
                     Console.WriteLine("\nInvalid option");
                     Console.WriteLine("Press enter to continue.");
                     Console.ReadLine();
                     return;
+                }
+            }
+            else if (choice == "4")
+            {
+                Console.WriteLine("\nBCD: ");
+                string input = Console.ReadLine();
+                string[] numbers = input.Split(' ');
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    int dec = Convert.ToInt32(numbers[i]);
+                    string binaryValue = Convert.ToString(dec, 2);
+                    while (binaryValue.Length < 8)
+                    {
+                        binaryValue = "0" + binaryValue;
+                    }
+                    Console.WriteLine($"= {binaryValue}");
                 }
             }
             else
@@ -289,6 +300,15 @@ namespace Calculator
             Console.WriteLine("Matrices Calculator: ");
             Console.WriteLine("1. Addition\n2. Subtraction\n3. Dot Product\n4. Scalar\n5. Determinant");
             string choice = Console.ReadLine();
+
+            if (choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice != "5")//In case user chooses an invalid option.
+            {
+                Console.WriteLine("\nInvalid option");
+                Console.WriteLine("Press enter to continue.");
+                Console.ReadLine();
+                return;
+            }
+
             Console.WriteLine("\na: b: c: d:");//Asks the user for 4 numbers
             string input1 = Console.ReadLine();//stores as input1
             string[] numbers1 = input1.Split(" ");//splits at each " "
@@ -365,13 +385,6 @@ namespace Calculator
                 double determinant = (a * d) - (b * c);
                 Console.WriteLine($"= {determinant}");
             }
-            else
-            {
-                Console.WriteLine("\nInvalid option");
-                Console.WriteLine("Press enter to continue.");
-                Console.ReadLine();
-                return;
-            }
             Console.WriteLine("\nPress enter to continue.");
             Console.ReadLine();
             return;
@@ -380,7 +393,7 @@ namespace Calculator
         public static void GandV()//Fin
         {
             Console.WriteLine("Matrices Calculator: ");
-            Console.WriteLine("1. Distance between two points\n2. Midpoint between two points\n3. Gradient\n4. Radians to Degrees\n5. Degrees to Radians\n6. Addition and Subtraction of Vectors\n7.Dot Product");
+            Console.WriteLine("1. Distance between two points\n2. Midpoint between two points\n3. Gradient\n4. Radians to Degrees\n5. Degrees to Radians\n6. Addition and Subtraction of Vectors\n7. Dot Product");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
