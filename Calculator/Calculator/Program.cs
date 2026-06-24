@@ -12,7 +12,7 @@ namespace Calculator
             {
                 Console.Clear();
                 Console.WriteLine("Main Menu\nPlease select from the numbers below");
-                Console.WriteLine("1  Basic Calculator (+ - * / % ! ^ sqrt)\n2  Binary\n3  Matrices\n4  Geometry and Vectors\n5. Number Theory and Encryption\n6. Cryptography\n0  Exit Menu System\n");
+                Console.WriteLine("1  Basic Calculator (+ - * / % ! ^ sqrt)\n2  Binary\n3  Matrices\n4  Geometry and Vectors\n5. Number Theory\n6. Cryptography\n0  Exit Menu System\n");
                 string temp = Console.ReadLine();
                 task = Convert.ToInt32(temp);
                 Console.Clear();
@@ -581,9 +581,9 @@ namespace Calculator
                 int mod = Convert.ToInt32(numbers[3]);
                 int start = x;
                 int count = 0;
-                x = (a * x + c) % mod;//Work in progress...
+                x = (a * x + c) % mod;
                 Console.WriteLine($"({a} * {start} + {c}) mod{mod} = {x}");
-                while (x != start && count < mod * 2)//Could repeat forever so mod * 2 prevents that by giving a number for it to finish at, When count reahces that number
+                while (count < mod * 2)//Work in progress...
                 {
                     int old = x;
                     x = (a * x + c) % mod;
@@ -596,6 +596,7 @@ namespace Calculator
             else if (choice == "3")
             {
                 Console.WriteLine("\nCalculator:");
+                Console.WriteLine("\nInput: ");
                 string input = Console.ReadLine();
                 if (input.Length == 13)
                 {
@@ -638,11 +639,11 @@ namespace Calculator
         public static void Cryptography()
         {
             Console.WriteLine("Number Theory and Encryption: ");
-            Console.WriteLine("1. Encrypt n + 3\n2. Decrypt n - 3\n3. Encrypt aP + b\n4. Decrypt aP - b");
+            Console.WriteLine("1. Encrypt n + 3\n2. Decrypt n - 3\n3. Encrypt aP + b\n4. Decrypt aP - b\n5. BRUTEFORCE");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
-                Console.WriteLine("\nCalculator:");
+                Console.WriteLine("\nEncrypt:");
                 string input = Console.ReadLine().ToUpper();//Stores the word to encrypt
                 string encrypted = "";//Makes an empty string
                 for (int i = 0; i < input.Length; i++)//Loops once for each character in the user's input
@@ -657,7 +658,7 @@ namespace Calculator
             }
             else if (choice == "2")
             {
-                Console.WriteLine("\nCalculator:");
+                Console.WriteLine("\nDecrypt:");
                 string input = Console.ReadLine().ToUpper();//Pretty much the same process
                 string encrypted = "";
                 for (int i = 0; i < input.Length; i++)
@@ -665,6 +666,10 @@ namespace Calculator
                     char oldLetter = input[i];
                     int num = oldLetter - 'A';
                     int encrypt = (num - 3) % 26; //except we move the number back 3 spaces to decrypt. 
+                    if (encrypt < 0)
+                    {
+                        encrypt += 26;//If encrpyt is smaller than 0 it adds 26 onto it so it doesnt error
+                    }
                     char newLetter = (char)(encrypt + 'A');
                     encrypted += newLetter;
                 }
@@ -672,8 +677,7 @@ namespace Calculator
             }
             else if (choice == "3") //The Affine Cypher was a bit confusing for me
             {
-                Console.WriteLine("\nCalculator:");
-                Console.WriteLine("\nInput: ");
+                Console.WriteLine("\nEncrypt:");
                 string input = Console.ReadLine().ToUpper();
                 string encrypted = "";
                 Console.WriteLine("\nInput: a: b: ");
@@ -681,11 +685,22 @@ namespace Calculator
                 string[] numbers = input1.Split(" ");
                 int a = Convert.ToInt32(numbers[0]);
                 int b = Convert.ToInt32(numbers[1]);
+                if (a < 0 || a > 25 || b < 0 || b > 25)
+                {
+                    Console.WriteLine("\nEach input must be between 0 - 25");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 for (int i = 0; i < input.Length; i++)
                 {
                     char oldLetter = input[i];
                     int num = oldLetter - 'A';
                     int encrypt = (a * num + b) % 26;//So i used the provided calculation in the assignment document 
+                    if (encrypt < 0)
+                    {
+                        encrypt += 26;
+                    }
                     char newLetter = (char)(encrypt + 'A');
                     encrypted += newLetter;//While following the same process to create the encrypted word
                 }
@@ -693,8 +708,7 @@ namespace Calculator
             }
             else if (choice == "4")
             {
-                Console.WriteLine("\nCalculator:");
-                Console.WriteLine("\nInput: ");
+                Console.WriteLine("\nDecrypt:");
                 string input = Console.ReadLine().ToUpper();
                 string encrypted = "";
                 Console.WriteLine("\nInput: a: b: ");
@@ -702,15 +716,51 @@ namespace Calculator
                 string[] numbers = input1.Split(" ");
                 int a = Convert.ToInt32(numbers[0]);
                 int b = Convert.ToInt32(numbers[1]);
+                if (a < 0 || a > 25 || b < 0 || b > 25)
+                {
+                    Console.WriteLine("\nEach input must be between 0 - 25");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 for (int i = 0; i < input.Length; i++)
                 {
                     char oldLetter = input[i];
                     int num = oldLetter - 'A';
                     int encrypt = (a * num - b) % 26; //And used num - b for decryption
+                    if (encrypt < 0)
+                    {
+                        encrypt += 26;
+                    }
                     char newLetter = (char)(encrypt + 'A');
                     encrypted += newLetter;
                 }
                 Console.WriteLine($"= {encrypted}");
+            }
+            else if (choice == "5")
+            {
+                Console.WriteLine("\nDecrypt:");//This is almost the same as the user input a and b version, except it does a and b on its own, using all possibilities 
+                string input = Console.ReadLine().ToUpper();
+                for (int i = 0; i < 26; i++)//26 letters for a (each letter)
+                {
+                    for (int j = 0; j < 26; j++)//26 letters for b
+                    {
+                        string encrypted = "";//Resets encypted
+                        for (int k = 0; k < input.Length; k++)//The actual bruteforcing
+                        {
+                            char oldLetter = input[k];
+                            int num = oldLetter - 'A';
+                            int decrypt = (i * num - j) % 26;
+                            if (decrypt < 0)
+                            {
+                                decrypt += 26;
+                            }
+                            char newLetter = (char)(decrypt + 'A');
+                            encrypted += newLetter;
+                        }
+                        Console.WriteLine($"a = {i}, b = {j} = {encrypted}");//Prints out every possible answer
+                    }
+                }
             }
             else
             {
