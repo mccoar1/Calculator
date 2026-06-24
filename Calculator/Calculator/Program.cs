@@ -395,15 +395,15 @@ namespace Calculator
             Console.WriteLine("Matrices Calculator: ");
             Console.WriteLine("1. Distance between two points\n2. Midpoint between two points\n3. Gradient\n4. Radians to Degrees\n5. Degrees to Radians\n6. Addition and Subtraction of Vectors\n7. Dot Product");
             string choice = Console.ReadLine();
-            if (choice == "1")
+            if (choice == "1")//Distance
             {
-                Console.WriteLine("\nx1: y1:");
+                Console.WriteLine("\nx1: y1:");//First point of a line
                 string input1 = Console.ReadLine();
                 string[] numbers1 = input1.Split(" ");
                 double x1 = Convert.ToDouble(numbers1[0]);
                 double y1 = Convert.ToDouble(numbers1[1]);
 
-                Console.WriteLine("\nx2: y2:");
+                Console.WriteLine("\nx2: y2:");//Second point of a line
                 string input2 = Console.ReadLine();
                 string[] numbers2 = input2.Split(" ");
                 double x2 = Convert.ToDouble(numbers2[0]);
@@ -413,12 +413,12 @@ namespace Calculator
                 double y = (y2 - y1);
                 double total = (x * x) + (y * y);
 
-                double sqrt = Math.Sqrt(total);
+                double sqrt = Math.Sqrt(total);//Had all the equations in my maths book 
 
                 Console.WriteLine($"= {sqrt}");
 
             }
-            else if (choice == "2")
+            else if (choice == "2")//Midpoint
             {
                 Console.WriteLine("\nx1: y1:");
                 string input1 = Console.ReadLine();
@@ -437,7 +437,7 @@ namespace Calculator
 
                 Console.WriteLine($"= {x},{y}");
             }
-            else if (choice == "3")
+            else if (choice == "3")//Gradient
             {
                 Console.WriteLine("\nx1: y1:");
                 string input1 = Console.ReadLine();
@@ -457,16 +457,16 @@ namespace Calculator
 
                 Console.WriteLine($"= {grad}");
             }
-            else if (choice == "4")
+            else if (choice == "4")// R to D
             {
-                Console.WriteLine("\nr: ");
+                Console.WriteLine("\nr: ");//Asks user for a radian
                 double radian = Convert.ToDouble(Console.ReadLine());
-                double degrees = radian * (180 / Math.PI);
+                double degrees = radian * (180 / Math.PI);//Converts to degrees. Math.PI is how pi is stored in c#
                 Console.WriteLine($"= {degrees}");
             }
-            else if (choice == "5")
+            else if (choice == "5")//D to R
             {
-                Console.WriteLine("\nd: ");
+                Console.WriteLine("\nd: ");//Asks user for a distance
                 double degrees = Convert.ToDouble(Console.ReadLine());
                 double radian = degrees * (Math.PI / 180);
                 Console.WriteLine($"= {radian}");
@@ -508,17 +508,17 @@ namespace Calculator
                 double c1 = a1 * b1;
                 double c2 = a2 * b2;
                 double dot = c1 + c2;
-                if (dot > 0)
+                if (dot > 0)//Checks to see if dot holds a postive number
                 {
                     Console.WriteLine($"\n{c1} + {c2} = {dot}");
                     Console.WriteLine("= Positive");
                 }
-                else if (dot < 0)
+                else if (dot < 0)//Checks to see if dot holds a negative number
                 {
                     Console.WriteLine($"\n{c1} + {c2} = {dot}");
                     Console.WriteLine("= Negative");
                 }
-                else
+                else//If its 0 the lines have crossed paths and "clash"
                 {
                     Console.WriteLine("Clash");
                 }
@@ -544,7 +544,7 @@ namespace Calculator
             {
                 Console.Write("Number: ");
                 int num = Convert.ToInt32(Console.ReadLine());
-                if (num < 2)
+                if (num < 2)//Anything under 2 is not a prime number
                 {
                     Console.WriteLine("Not a prime number");
                 }
