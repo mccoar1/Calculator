@@ -649,6 +649,11 @@ namespace Calculator
                 for (int i = 0; i < input.Length; i++)//Loops once for each character in the user's input
                 {
                     char oldLetter = input[i]; //Gets the current character from the input string
+                    if (oldLetter == ' ')//Checks for spaces!
+                    {
+                        encrypted += ' '; //Keeps spaces in the decrypted text
+                        continue; //Skips the rest of this loop iteration
+                    }
                     int num = oldLetter - 'A'; //Tried doing - 1 but letters are stored as ASCII values, so subtract 'A' to get 0-25
                     int encrypt = (num + 3) % 26; //Moves the number 3 positions mod by 26
                     char newLetter = (char)(encrypt + 'A'); //turns the number back into a letter
@@ -664,6 +669,11 @@ namespace Calculator
                 for (int i = 0; i < input.Length; i++)
                 {
                     char oldLetter = input[i];
+                    if (oldLetter == ' ')
+                    {
+                        encrypted += ' ';
+                        continue;
+                    }
                     int num = oldLetter - 'A';
                     int encrypt = (num - 3) % 26; //except we move the number back 3 spaces to decrypt. 
                     if (encrypt < 0)
