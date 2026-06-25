@@ -342,6 +342,13 @@ namespace Calculator
             Console.WriteLine("\na: b: c: d:");//Asks the user for 4 numbers
             string input1 = Console.ReadLine();//stores as input1
             string[] numbers1 = input1.Split(" ");//splits at each " "
+            if (numbers1.Length != 4)
+            {
+                Console.WriteLine("\nPlease enter exactly 4 numbers.");
+                Console.WriteLine("Press enter to continue.");
+                Console.ReadLine();
+                return;
+            }
             double a = Convert.ToDouble(numbers1[0]);
             double b = Convert.ToDouble(numbers1[1]);
             double c = Convert.ToDouble(numbers1[2]);
@@ -401,13 +408,20 @@ namespace Calculator
             else if (choice == "4")
             {
                 Console.WriteLine("Enter scalar:");
-                double scalar = Convert.ToDouble(Console.ReadLine());
-                double num1 = a * scalar;
+                string input = Console.ReadLine();//has to be a string to check for "" in the if statement
+                if (input == "")//No more crashes if the user presses enter
+                {
+                    Console.WriteLine("\nNo number entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
+                double scalar = Convert.ToDouble(input);//After the check, we convert it to a double
+                double num1 = a * scalar;//All the calculations from my math book
                 double num2 = b * scalar;
                 double num3 = c * scalar;
                 double num4 = d * scalar;
-
-                Console.WriteLine($"\n{num1} {num2}");
+                Console.WriteLine($"\n{num1} {num2}");//Displays answers
                 Console.WriteLine($"{num3} {num4}");
             }
             else if (choice == "5")
