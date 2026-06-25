@@ -75,7 +75,7 @@ namespace Calculator
             {
                 op = "^";
             }
-            else if (input.Contains("sqrt"))//Square root
+            else if (input.Contains("sqrt"))//Square root           
             {
                 op = "sqrt";
             }
@@ -172,7 +172,15 @@ namespace Calculator
             if (choice == "1")
             {
                 Console.WriteLine("\nCalculator: ");
-                int dec = Convert.ToInt32(Console.ReadLine());
+                string input = Console.ReadLine();
+                if (input == "")//No more crashes if the user presses enter
+                {
+                    Console.WriteLine("\nNo number entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
+                int dec = Convert.ToInt32(input);//After the check it converts input to a decimal
                 string binaryValue = Convert.ToString(dec, 2);              
                 while (binaryValue.Length < 8)//Adds 0s so the binary is always 8 bits long
                 {
@@ -225,13 +233,21 @@ namespace Calculator
             else if (choice == "3")
             {
                 //Console.WriteLine("N/A");
-                Console.WriteLine("Conversion Calculator: ");
+                Console.WriteLine("\n\nConversion Calculator: ");
                 Console.WriteLine("1. Decimal to Binary/Hex\n2. Binary to Decimal/Hex\n3. Hex to Decimal/Binary");
                 string choice2 = Console.ReadLine();
                 if (choice2 == "1")
                 {
-                    Console.WriteLine("Decimal: ");//decimal conversion
-                    int dec = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("\nDecimal: ");//decimal conversion
+                    string input = Console.ReadLine();
+                    if (input == "")//No more crashes if the user presses enter
+                    {
+                        Console.WriteLine("\nNo number entered.");
+                        Console.WriteLine("Press enter to continue.");
+                        Console.ReadLine();
+                        return;
+                    }
+                    int dec = Convert.ToInt32(input);
                     string binaryValue = Convert.ToString(dec, 2);
                     string hexValue = dec.ToString("X");
                     while (binaryValue.Length < 8)
@@ -242,16 +258,30 @@ namespace Calculator
                 }
                 else if (choice2 == "2")
                 {
-                    Console.WriteLine("Binary: ");//Binary conversion
+                    Console.WriteLine("\nBinary: ");//Binary conversion
                     string bin = Console.ReadLine();
+                    if (bin == "")//No more crashes if the user presses enter
+                    {
+                        Console.WriteLine("\nNo number entered.");
+                        Console.WriteLine("Press enter to continue.");
+                        Console.ReadLine();
+                        return;
+                    }
                     int decValue = Convert.ToInt32(bin, 2);
                     string hexValue = decValue.ToString("X");
                     Console.WriteLine($"Decimal = {decValue}\nHex = {hexValue}");
                 }
                 else if (choice2 == "3")
                 {
-                    Console.WriteLine("Hex: ");//Hex conversion
+                    Console.WriteLine("\nHex: ");//Hex conversion
                     string hex = Console.ReadLine();
+                    if (hex == "") // No more crashes if the user presses enter
+                    {
+                        Console.WriteLine("\nNo number entered.");
+                        Console.WriteLine("Press enter to continue.");
+                        Console.ReadLine();
+                        return;
+                    }
                     int decValue = Convert.ToInt32(hex, 16);
                     string binaryValue = Convert.ToString(decValue, 2);
                     while (binaryValue.Length < 8)//I like the way this while loop makes the binary number tidier when working with small numbers, while also alowing for larger binary numbers too
@@ -693,6 +723,13 @@ namespace Calculator
                 Console.WriteLine("\nInput: a: b: ");
                 string input1 = Console.ReadLine();
                 string[] numbers = input1.Split(" ");
+                if (numbers.Length != 2)
+                {
+                    Console.WriteLine("\nPlease enter two numbers separated by a space.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 int a = Convert.ToInt32(numbers[0]);
                 int b = Convert.ToInt32(numbers[1]);
                 if (a < 0 || a > 25 || b < 0 || b > 25)
@@ -724,6 +761,13 @@ namespace Calculator
                 Console.WriteLine("\nInput: a: b: ");
                 string input1 = Console.ReadLine();
                 string[] numbers = input1.Split(" ");
+                if (numbers.Length != 2)
+                {
+                    Console.WriteLine("\nPlease enter two numbers separated by a space.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 int a = Convert.ToInt32(numbers[0]);
                 int b = Convert.ToInt32(numbers[1]);
                 if (a < 0 || a > 25 || b < 0 || b > 25)
