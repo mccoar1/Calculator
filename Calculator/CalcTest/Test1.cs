@@ -170,5 +170,43 @@ namespace CalcTest
             string hexValue = dec.ToString("X");
             Assert.AreEqual(expectedResult, hexValue);
         }
+        [TestMethod]
+        public void TestMethod18()//affine decrypt
+        {
+            string expectedResult = "FOXES";
+            string decrypt = "FYRAS";
+            string encrypted = "";
+            for (int i = 0; i < decrypt.Length; i++)
+            {
+                char oldLetter = decrypt[i];
+                int num = oldLetter - 'A';
+                int encrypt = (5 * num - 6) % 26; //And used num - b for decryption
+                if (encrypt < 0)
+                {
+                    encrypt += 26;
+                }
+                char newLetter = (char)(encrypt + 'A');
+                encrypted += newLetter;
+            }
+        }
+        [TestMethod]
+        public void TestMethod19()//affine encrypt
+        {
+            string expectedResult = "FYRAS";
+            string decrypt = "FOXES";
+            string encrypted = "";
+            for (int i = 0; i < decrypt.Length; i++)
+            {
+                char oldLetter = decrypt[i];
+                int num = oldLetter - 'A';
+                int encrypt = (5 * num + 6) % 26; //And used num - b for decryption
+                if (encrypt < 0)
+                {
+                    encrypt += 26;
+                }
+                char newLetter = (char)(encrypt + 'A');
+                encrypted += newLetter;
+            }
+        }
     }
 }
