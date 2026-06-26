@@ -359,6 +359,13 @@ namespace Calculator
                 Console.WriteLine("\ne: f: g: h:");//Asks the user for 4 more numbers numbers
                 string input2 = Console.ReadLine();
                 string[] numbers2 = input2.Split(" ");
+                if (numbers2.Length != 4)
+                {
+                    Console.WriteLine("\nPlease enter exactly 4 numbers.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double e = Convert.ToDouble(numbers2[0]);
                 double f = Convert.ToDouble(numbers2[1]);
                 double g = Convert.ToDouble(numbers2[2]);
@@ -376,6 +383,13 @@ namespace Calculator
                 Console.WriteLine("\ne: f: g: h:");
                 string input2 = Console.ReadLine();
                 string[] numbers2 = input2.Split(" ");
+                if (numbers2.Length != 4)
+                {
+                    Console.WriteLine("\nPlease enter exactly 4 numbers.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double e = Convert.ToDouble(numbers2[0]);
                 double f = Convert.ToDouble(numbers2[1]);
                 double g = Convert.ToDouble(numbers2[2]);
@@ -393,6 +407,13 @@ namespace Calculator
                 Console.WriteLine("\ne: f: g: h:");
                 string input2 = Console.ReadLine();
                 string[] numbers2 = input2.Split(" ");
+                if (numbers2.Length != 4)
+                {
+                    Console.WriteLine("\nPlease enter exactly 4 numbers.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double e = Convert.ToDouble(numbers2[0]);
                 double f = Convert.ToDouble(numbers2[1]);
                 double g = Convert.ToDouble(numbers2[2]);
@@ -443,13 +464,41 @@ namespace Calculator
             {
                 Console.WriteLine("\nx1: y1:");//First point of a line
                 string input1 = Console.ReadLine();
+                if (input1 == "")
+                {
+                    Console.WriteLine("\nNo numbers entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 string[] numbers1 = input1.Split(" ");
+                if (numbers1.Length != 2)
+                {
+                    Console.WriteLine("\nPlease enter x1 and y1 separated by a space.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double x1 = Convert.ToDouble(numbers1[0]);
                 double y1 = Convert.ToDouble(numbers1[1]);
 
                 Console.WriteLine("\nx2: y2:");//Second point of a line
                 string input2 = Console.ReadLine();
+                if (input2 == "")
+                {
+                    Console.WriteLine("\nNo numbers entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 string[] numbers2 = input2.Split(" ");
+                if (numbers2.Length != 2)
+                {
+                    Console.WriteLine("\nPlease enter x2 and y2 separated by a space.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double x2 = Convert.ToDouble(numbers2[0]);
                 double y2 = Convert.ToDouble(numbers2[1]);
 
@@ -466,13 +515,41 @@ namespace Calculator
             {
                 Console.WriteLine("\nx1: y1:");
                 string input1 = Console.ReadLine();
+                if (input1 == "")
+                {
+                    Console.WriteLine("\nNo numbers entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 string[] numbers1 = input1.Split(" ");
+                if (numbers1.Length != 2)
+                {
+                    Console.WriteLine("\nPlease enter x1 and y1 separated by a space.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double x1 = Convert.ToDouble(numbers1[0]);
                 double y1 = Convert.ToDouble(numbers1[1]);
 
                 Console.WriteLine("\nx2: y2:");
                 string input2 = Console.ReadLine();
+                if (input2 == "")
+                {
+                    Console.WriteLine("\nNo numbers entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 string[] numbers2 = input2.Split(" ");
+                if (numbers2.Length != 2)
+                {
+                    Console.WriteLine("\nPlease enter x2 and y2 separated by a space.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double x2 = Convert.ToDouble(numbers2[0]);
                 double y2 = Convert.ToDouble(numbers2[1]);
 
@@ -485,13 +562,41 @@ namespace Calculator
             {
                 Console.WriteLine("\nx1: y1:");
                 string input1 = Console.ReadLine();
+                if (input1 == "")
+                {
+                    Console.WriteLine("\nNo numbers entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 string[] numbers1 = input1.Split(" ");
+                if (numbers1.Length != 2)
+                {
+                    Console.WriteLine("\nPlease enter x1 and y1 separated by a space.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double x1 = Convert.ToDouble(numbers1[0]);
                 double y1 = Convert.ToDouble(numbers1[1]);
                 //split all these longer ones so its easier to read. was helping with testing if things work
                 Console.WriteLine("\nx2: y2:");
                 string input2 = Console.ReadLine();
+                if (input2 == "")
+                {
+                    Console.WriteLine("\nNo numbers entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 string[] numbers2 = input2.Split(" ");
+                if (numbers2.Length != 2)
+                {
+                    Console.WriteLine("\nPlease enter x2 and y2 separated by a space.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double x2 = Convert.ToDouble(numbers2[0]);
                 double y2 = Convert.ToDouble(numbers2[1]);
 
@@ -504,14 +609,32 @@ namespace Calculator
             else if (choice == "4")// R to D
             {
                 Console.WriteLine("\nr: ");//Asks user for a radian
-                double radian = Convert.ToDouble(Console.ReadLine());
+                string input = Console.ReadLine();
+                if (input == "") // No more crashes if the user presses enter
+                {
+                    Console.WriteLine("\nNo number entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
+                double radian = Convert.ToDouble(input);
                 double degrees = radian * (180 / Math.PI);//Converts to degrees. Math.PI is how pi is stored in c#
                 Console.WriteLine($"= {degrees}");
             }
             else if (choice == "5")//D to R
             {
                 Console.WriteLine("\nd: ");//Asks user for a distance
-                double degrees = Convert.ToDouble(Console.ReadLine());
+                string input = Console.ReadLine();
+
+                if (input == "") // No more crashes if the user presses enter
+                {
+                    Console.WriteLine("\nNo number entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
+
+                double degrees = Convert.ToDouble(input);
                 double radian = degrees * (Math.PI / 180);
                 Console.WriteLine($"= {radian}");
             }
@@ -544,7 +667,21 @@ namespace Calculator
             {
                 Console.WriteLine("\na1: a2: b1: b2:");
                 string input = Console.ReadLine();
+                if (input == "") // No more crashes if the user presses enter
+                {
+                    Console.WriteLine("\nNo numbers entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 string[] numbers = input.Split(" ");
+                if (numbers.Length != 4)//no more crashes if the user doesnt type in the right amount of numbers
+                {
+                    Console.WriteLine("\nPlease enter exactly 4 numbers.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 double a1 = Convert.ToDouble(numbers[0]);
                 double a2 = Convert.ToDouble(numbers[1]);
                 double b1 = Convert.ToDouble(numbers[2]);
@@ -562,7 +699,7 @@ namespace Calculator
                     Console.WriteLine($"\n{c1} + {c2} = {dot}");
                     Console.WriteLine("= Negative");
                 }
-                else//If its 0 the lines have crossed paths and "clash"
+                else//If its 0 the lines are perpendicular
                 {
                     Console.WriteLine("Clash");
                 }
