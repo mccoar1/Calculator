@@ -32,7 +32,7 @@ namespace Calculator
                         GandV();
                         break;
                     case 5:
-                        NumTheandEncryp();
+                        NumTheory();
                         break;
                     case 6:
                         Cryptography();
@@ -302,6 +302,13 @@ namespace Calculator
             {
                 Console.WriteLine("\nBCD: ");
                 string input = Console.ReadLine();
+                if (input == "") // No more crashes if the user presses enter
+                {
+                    Console.WriteLine("\nNo number entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
                 string[] numbers = input.Split(' ');
                 for (int i = 0; i < numbers.Length; i++)
                 {
@@ -716,7 +723,7 @@ namespace Calculator
             return;
         }
 
-        public static void NumTheandEncryp()
+        public static void NumTheory()
         {
             Console.WriteLine("Number Theory and Encryption: ");
             Console.WriteLine("1. Primality\n2. RNG\n3. Bar Codes");
@@ -724,7 +731,15 @@ namespace Calculator
             if (choice == "1")
             {
                 Console.Write("Number: ");
-                int num = Convert.ToInt32(Console.ReadLine());
+                string input = Console.ReadLine();
+                if (input == "") // No more crashes if the user presses enter
+                {
+                    Console.WriteLine("\nNo numbers entered.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    return;
+                }
+                int num = Convert.ToInt32(input);
                 if (num < 2)//Anything under 2 is not a prime number
                 {
                     Console.WriteLine("Not a prime number");
@@ -871,7 +886,7 @@ namespace Calculator
                 Console.WriteLine("\nEncrypt:");
                 string input = Console.ReadLine().ToUpper();
                 string encrypted = "";
-                Console.WriteLine("\nInput: a: b: ");
+                Console.WriteLine("\na: b: ");
                 string input1 = Console.ReadLine();
                 string[] numbers = input1.Split(" ");
                 if (numbers.Length != 2)
@@ -909,7 +924,7 @@ namespace Calculator
                 Console.WriteLine("\nDecrypt:");
                 string input = Console.ReadLine().ToUpper();
                 string encrypted = "";
-                Console.WriteLine("\nInput: a: b: ");
+                Console.WriteLine("\na: b: ");
                 string input1 = Console.ReadLine();
                 string[] numbers = input1.Split(" ");
                 if (numbers.Length != 2)
